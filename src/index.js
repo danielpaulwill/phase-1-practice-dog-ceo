@@ -47,3 +47,9 @@ function initAllIterator(arg) {
   })
 };
 
+
+
+
+
+console.log(document.getElementsByTagName('select#breed-dropdow'))
+
