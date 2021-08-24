@@ -39,9 +39,11 @@ function initAllIterator(arg) {
   let dogBreeds = Object.keys(arg.message)
   let dogBreedList = document.getElementById('dog-breeds')
   dogBreeds.forEach(dogBreed => {
-  let breedList = document.createElement('li')   //Create li element for each breed
+  let breedList = document.createElement('li')//Create li element for each breed
+  breedList.addEventListener('click', e => e.target.style.color ="#fcba03")   //Change color when clicked
   let breedText = document.createTextNode(`${dogBreed}`)   //Put each breed into a text node
   breedList.appendChild(breedText)   //Put each breed text node into it's li element
   dogBreedList.appendChild(breedList)   //Put each li element into the ul DOM element
   })
 };
+
