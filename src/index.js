@@ -51,5 +51,21 @@ function initAllIterator(arg) {
 
 
 
-console.log(document.getElementsByTagName('select#breed-dropdow'))
+let dropDown = document.getElementsByTagName('form');
+//dropDown.addEventListener('change', e => console.log(e.target));
 
+
+
+
+
+// CHALLENGE 4
+// Step 1
+// Grab the a, b, c, and d elements from the drop down
+// Step 2
+// Filter the Dog breed results based on whichever letter is selected
+// 
+// Step 3?
+// Try a .filter and a 
+//          str.charAt(0) which should select the first character in each li
+// If str.charAt(0) === 'a', etc.
+// 
