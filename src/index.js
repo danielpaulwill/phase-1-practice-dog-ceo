@@ -31,12 +31,17 @@ function init4() {
 function initAll() {
   fetch('https://dog.ceo/api/breeds/list/all')
   .then(res => res.json())
-  .then(data => {
-  data.message.forEach(dogBreed => {   //Iterate through each dog breed
+  .then(data => initAllIterator(data))
+  };
+
+
+function initAllIterator(arg) {
+  let dogBreeds = Object.keys(arg.message)
+  let dogBreedList = document.getElementById('dog-breeds')
+  dogBreeds.forEach(dogBreed => {
   let breedList = document.createElement('li')   //Create li element for each breed
   let breedText = document.createTextNode(`${dogBreed}`)   //Put each breed into a text node
   breedList.appendChild(breedText)   //Put each breed text node into it's li element
   dogBreedList.appendChild(breedList)   //Put each li element into the ul DOM element
-    })
   })
 };
