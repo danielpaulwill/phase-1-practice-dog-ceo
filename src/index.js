@@ -26,8 +26,6 @@ function initAll() {
   fetch('https://dog.ceo/api/breeds/list/all')
   .then(res => res.json())
   .then(data => initAllIterator(data))
-//   // let dataAll = data
-//   // return dataAll
   };
 
 // Take my breed data and put each breed into a li element on the page
@@ -43,41 +41,31 @@ function initAllIterator(arg) {
   })};
 
 
-
-
-
-  // 
-
 let dropDown = document.getElementsByTagName('select-breed');
-//dropDown.addEventListener('change', e => console.log(e.target));
 
 
+document.addEventListener('change', e => {
+  let input = e.target.value
+  initBreedFilter(input)
+});
 
-let input = "b"
-
-function initBreedFilter() {
-  document.getElementById('dog-breeds').remove()
+function initBreedFilter(input) {
+  document.getElementById('dog-breeds').innerHTML = ''
   fetch('https://dog.ceo/api/breeds/list/all')
   .then(res => res.json())
-  .then(data => filterBreeds(data))
-//   // let dataAll = data
-//   // return dataAll
-  };
+  .then(data => filterBreeds(data, input))
+};
 
-function filterBreeds(arg) {
-  let dogBreeds = Object.keys(arg.message)
+function filterBreeds(arg1, arg2) {
+  let dogBreeds = Object.keys(arg1.message)
   let dogBreedList = document.getElementById('dog-breeds')
   dogBreeds.forEach(dogBreed => {
-  let breedList = document.createElement('li')//Create li element for each breed
+  let breedList = document.createElement('li') //Create li element for each breed
   breedList.addEventListener('click', e => e.target.style.color ="#fcba03")   //Change color when clicked
   let breedText = document.createTextNode(`${dogBreed}`)   //Put each breed into a text node
-  if (dogBreed.charAt(0) === input) {
-  console.log('My debugger is sad')
+  if (dogBreed.charAt(0) === arg2) {
   breedList.appendChild(breedText)   //Put each breed text node into it's li element
-    console.log('but not as sad as you might think')
-    debugger;
   dogBreedList.appendChild(breedList)   //Put each li element into the ul DOM element
-    console.log('nope, still sad')
 }})
 };
 
@@ -89,6 +77,15 @@ function filterBreeds(arg) {
 // Step 2
 // Filter the Dog breed results based on whichever letter is selected
  
+
+
+// document.addEventListener('change', e => {
+//   let input = e.target.value
+//   initBreedFilter()
+//   return input
+// });
+
+
 
 
 // Step 3?
